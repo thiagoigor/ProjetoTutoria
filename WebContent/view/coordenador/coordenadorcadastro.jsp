@@ -8,35 +8,26 @@
 
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath()%>/resources\css\estilo.css">
 
-<title>Operacional</title>
+<title>Cadastro de Coordenador</title>
 </head>
 <body>
 	<%@ include file="../../fragment/topofragment.html" %>
 	<%@ include file="../../fragment/menu.html" %>
 	<div class="conteudo">
-		<h3>Lista de Operacional</h3> <br/>
+		<h3>Cadastro de Coordenador</h3>
 		
-		<table border="1px">
-			<thead>
-				<tr>
-					<th>Nome</th>
-					<th>Matrícula</th>
-					<th>E-mail</th>
-					<th>Telefone</th>
-					<th>Operações</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>F_INFRA</td>
-					<td>2211</td>
-					<td>f.infra@alfa.br</td>
-					<td>62 99999999</td>
-					<td>A R</td>
-				</tr>
-			</tbody>
-		</table>
-		<a href="<%= request.getContextPath()%>/view/operacional/operacionalcadastro.jsp"><button>Novo Operador</button></a>
+		<form action="" method="post">
+  			<fieldset>
+			    <legend>Informações:</legend>
+			    Nome: <input type="text"><br>
+			    Matrícula: <input type="text"><br>
+			    E-mail: <input type="text"><br>
+			    Telefones: <input type="text">
+		  	</fieldset>
+		  	
+		  	<input type="submit" name="salvar" value="Salvar" />
+		  	<input type="submit" name="cancelar" value="Cancelar" />
+		</form>
 		
 	</div>
 	<%@ include file="../../fragment/rodape.html" %>

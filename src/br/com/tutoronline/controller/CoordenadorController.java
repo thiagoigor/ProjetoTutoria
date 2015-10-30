@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.tutoronline.DAO.CoordenadorDAO;
-import br.com.tutoronline.util.FactoryUtil;
+import br.com.tutoronline.model.CoordenadorDAO;
+import br.com.tutoronline.resources.FactoryUtil;
 
 
 @WebServlet({ "/CoordenadorController", "/coordenador" })

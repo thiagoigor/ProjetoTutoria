@@ -14,7 +14,10 @@
 	<%@ include file="../../fragment/topofragment.html" %>
 	<%@ include file="../../fragment/menu.html" %>
 	<div class="conteudo">
-		
+		Opções de Relatório
+		<br/>
+		<br/>
+		<a href="<%= request.getContextPath()%>/view/coordenador/coordenadorcadastro.jsp"><button>Novo Coordenador</button></a>
 	</div>
 	<%@ include file="../../fragment/rodape.html" %>
 </body>

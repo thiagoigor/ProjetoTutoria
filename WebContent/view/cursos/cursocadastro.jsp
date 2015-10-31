@@ -14,7 +14,27 @@
 	<%@ include file="../../fragment/topofragment.html" %>
 	<%@ include file="../../fragment/menu.html" %>
 	<div class="conteudo">
-		
+		<form action="" method="post">
+  			<fieldset>
+			    <legend>Informações:</legend>
+			    Código: <input type="text"><br>
+			    Nome: <input type="text"><br>
+			    Centro de Custo: <input type="text"><br>
+			    Periodos: <input type="text"><br>
+			    Ciclo básico: Sim <input type="radio" name="ciclo" value="S">
+			    			  Não <input type="radio" name="ciclo" value="N"><br>
+			    Coordenador: <select>
+				  <option value="Tipo1">Coordenador1</option>
+				  <option value="Tipo2">Coordenador2</option>
+				  <option value="Tipo3">Coordenador3</option>
+				  <option value="Tipo4">Coordenador4</option>
+				</select>
+			    
+		  	</fieldset>
+		  	
+		  	<input type="submit" name="salvar" value="Salvar" />
+		  	<input type="submit" name="cancelar" value="Cancelar" />
+		</form>
 	</div>
 	<%@ include file="../../fragment/rodape.html" %>
 </body>

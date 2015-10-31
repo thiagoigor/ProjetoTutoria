@@ -14,7 +14,32 @@
 	<%@ include file="../../fragment/topofragment.html" %>
 	<%@ include file="../../fragment/menu.html" %>
 	<div class="conteudo">
-		
+		<form action="" method="post">
+  			<fieldset>
+			    <legend>Informações:</legend>
+			    Nome: <input type="text"><br>
+			    Matrícula: <input type="text"><br>
+			    E-mail: <input type="text"><br>
+			    Telefones: <input type="text"><br>
+			    Tipo: <select>
+				  <option value="Tipo1">Tipo1</option>
+				  <option value="Tipo2">Tipo2</option>
+				  <option value="Tipo3">Tipo3</option>
+				  <option value="Tipo4">Tipo4</option>
+				</select>
+				<br/>
+			    Sub-Tipo: <select>
+				  <option value="Tipo1">Tipo1</option>
+				  <option value="Tipo2">Tipo2</option>
+				  <option value="Tipo3">Tipo3</option>
+				  <option value="Tipo4">Tipo4</option>
+				</select>
+			    
+		  	</fieldset>
+		  	
+		  	<input type="submit" name="salvar" value="Salvar" />
+		  	<input type="submit" name="cancelar" value="Cancelar" />
+		</form>
 	</div>
 	<%@ include file="../../fragment/rodape.html" %>
 </body>

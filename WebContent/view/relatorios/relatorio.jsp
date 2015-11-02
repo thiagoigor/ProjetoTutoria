@@ -17,7 +17,7 @@
 		Opções de Relatório
 		<br/>
 		<br/>
-		<a href="<%= request.getContextPath()%>/view/coordenador/coordenadorcadastro.jsp"><button>Novo Coordenador</button></a>
+		<a href="<%= request.getContextPath()%>/view/relatorios/quantidadechamados.jsp"><button>Quantidade de Chamados</button></a>
 	</div>
 	<%@ include file="../../fragment/rodape.html" %>
 </body>

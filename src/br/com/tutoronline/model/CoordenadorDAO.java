@@ -1,22 +1,86 @@
 package br.com.tutoronline.model;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.tutoronline.entity.Coordenador;
+import br.com.tutoronline.resources.ConnectionFactory;
+import br.com.tutoronline.resources.FactoryUtil;
 import br.com.tutoronline.resources.IPersistencia;
 
 public class CoordenadorDAO implements IPersistencia<Coordenador>{
+	private Connection conn;
+	private PreparedStatement stmt;
+	private ResultSet rs;
 
 	@Override
 	public boolean GraveDados(Coordenador objeto) {
-		return false;
+		conn = FactoryUtil.getInstance().crie(ConnectionFactory.class).getConnection();
+		
+		String sql = INSERT + INTO + " coordenador (nome, matricula,email, telefone) "+VALUES+" (?,?,?,?)";
+		
+		try {
+			stmt = this.conn.prepareStatement(sql);
+			
+			stmt.setString(1, objeto.getNome());
+			stmt.setString(2, objeto.getMatricula());
+			stmt.setString(3, objeto.getEmail());
+			stmt.setString(4, objeto.getTelefone());
+			
+			return this.stmt.execute();
+	
+		} catch (SQLException e) {
+			throw new RuntimeException();
+		}	
 	}
 
 	@Override
-	public boolean ObtenhaDados(Coordenador objeto) {
-		return false;
+	public List<Coordenador> ObtenhaDados(Coordenador objeto) {
+		List<Coordenador> coordenadores=null;
+		try{
+			String sql = SELECT + " * " + FROM + " coordenador";
+			stmt = this.conn.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			coordenadores = new ArrayList<>();
+			while(rs.next()){
+				Coordenador coordenador = new Coordenador();
+				coordenador.setId(rs.getInt("id"));
+				coordenador.setNome(rs.getString("nome"));
+				coordenador.setMatricula(rs.getString("matricula"));
+				coordenador.setEmail(rs.getString("email"));
+				coordenador.setTelefone(rs.getString("telefone"));
+				
+				coordenadores.add(coordenador);
+			}
+		}catch(SQLException e){
+			throw new RuntimeException();
+		}
+		return coordenadores;		
 	}
 
 	@Override
 	public boolean AtualizeDados(Coordenador objeto) {
-		return false;
+conn = FactoryUtil.getInstance().crie(ConnectionFactory.class).getConnection();
+		
+		String sql = UPDATE + " coordenador " + SET + " nome = ?, matricula = ?,email = ?, telefone = ? " +WHERE+" coordenador.id = ?";
+		
+		try {
+			stmt = this.conn.prepareStatement(sql);
+			
+			stmt.setString(1, objeto.getNome());
+			stmt.setString(2, objeto.getMatricula());
+			stmt.setString(3, objeto.getEmail());
+			stmt.setString(4, objeto.getTelefone());
+			stmt.setInt(5, objeto.getId());
+			
+			return this.stmt.executeUpdate() > 0 ;
+	
+		} catch (SQLException e) {
+			throw new RuntimeException();
+		}	
 	}
 
 	@Override

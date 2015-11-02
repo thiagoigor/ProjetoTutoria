@@ -16,20 +16,22 @@
 	<div class="conteudo">
 		<h3>Cadastro de Coordenador</h3>
 		
-		<form action="" method="post">
+		<form name="formCoordenador" action="coordenador?action=cadastrar" method="post">
   			<fieldset>
 			    <legend>Informações:</legend>
-			    Nome: <input type="text"><br>
-			    Matrícula: <input type="text"><br>
-			    E-mail: <input type="text"><br>
-			    Telefones: <input type="text">
+			    Nome: <input type="text" name="nome"><br>
+			    Matrícula: <input type="text" nome = "matricula"><br>
+			    E-mail: <input type="text" name="email"><br>
+			    Telefones: <input type="text" name="telefone">
 		  	</fieldset>
 		  	
 		  	<input type="submit" name="salvar" value="Salvar" />
-		  	<input type="submit" name="cancelar" value="Cancelar" />
 		</form>
+		
+		
 		
 	</div>
 	<%@ include file="../../fragment/rodape.html" %>
+	
 </body>
 </html>

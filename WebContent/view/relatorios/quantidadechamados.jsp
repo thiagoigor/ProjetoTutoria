@@ -8,7 +8,7 @@
 
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath()%>/resources\css\estilo.css">
 
-<title>Relatórios</title>
+<title>Quantidade de Chamados</title>
 </head>
 <body>
 	<%@ include file="../../fragment/topofragment.html" %>

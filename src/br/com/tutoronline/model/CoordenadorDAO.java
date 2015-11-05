@@ -19,22 +19,30 @@ public class CoordenadorDAO implements IPersistencia<Coordenador>{
 	@Override
 	public boolean GraveDados(Coordenador objeto) {
 		conn = FactoryUtil.getInstance().crie(ConnectionFactory.class).getConnection();
-		
+
 		String sql = INSERT + INTO + " coordenador (nome, matricula,email, telefone) "+VALUES+" (?,?,?,?)";
-		
+
 		try {
 			stmt = this.conn.prepareStatement(sql);
-			
+
 			stmt.setString(1, objeto.getNome());
 			stmt.setString(2, objeto.getMatricula());
 			stmt.setString(3, objeto.getEmail());
 			stmt.setString(4, objeto.getTelefone());
-			
+
 			return this.stmt.execute();
-	
+
 		} catch (SQLException e) {
 			throw new RuntimeException();
-		}	
+		}finally{
+			try {
+				conn.close();
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
 	}
 
 	@Override
@@ -52,35 +60,50 @@ public class CoordenadorDAO implements IPersistencia<Coordenador>{
 				coordenador.setMatricula(rs.getString("matricula"));
 				coordenador.setEmail(rs.getString("email"));
 				coordenador.setTelefone(rs.getString("telefone"));
-				
+
 				coordenadores.add(coordenador);
 			}
+			return coordenadores;
 		}catch(SQLException e){
 			throw new RuntimeException();
-		}
-		return coordenadores;		
+		}finally{
+			try {
+				conn.close();
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}	
 	}
 
 	@Override
 	public boolean AtualizeDados(Coordenador objeto) {
-conn = FactoryUtil.getInstance().crie(ConnectionFactory.class).getConnection();
-		
+		conn = FactoryUtil.getInstance().crie(ConnectionFactory.class).getConnection();
+
 		String sql = UPDATE + " coordenador " + SET + " nome = ?, matricula = ?,email = ?, telefone = ? " +WHERE+" coordenador.id = ?";
-		
+
 		try {
 			stmt = this.conn.prepareStatement(sql);
-			
+
 			stmt.setString(1, objeto.getNome());
 			stmt.setString(2, objeto.getMatricula());
 			stmt.setString(3, objeto.getEmail());
 			stmt.setString(4, objeto.getTelefone());
 			stmt.setInt(5, objeto.getId());
-			
+
 			return this.stmt.executeUpdate() > 0 ;
-	
+
 		} catch (SQLException e) {
 			throw new RuntimeException();
-		}	
+		}finally{
+			try {
+				conn.close();
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
 	}
 
 	@Override

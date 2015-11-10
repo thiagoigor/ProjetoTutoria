@@ -7,6 +7,7 @@ public class Coordenador {
 	private String matricula;
 	private String email;
 	private String telefone;
+	private boolean ativado;
 	
 	
 	public Coordenador setCoordenador(String nome, String matricula, String email, String telefone) {
@@ -47,4 +48,14 @@ public class Coordenador {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+
+	public boolean isAtivado() {
+		return ativado;
+	}
+
+	public void setAtivado(boolean ativado) {
+		this.ativado = ativado;
+	}
+	
+	
 }

@@ -6,13 +6,15 @@ public class Operacional {
 	private String matricula;
 	private String email;
 	private String telefone;
+	private int idTipo;
+	private int idSubTipo;
 	private String tipo;
 	private String subTipo;
 	
 	public int getId() {
 		return id;
 	}
-	private void setId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getNome() {
@@ -39,6 +41,18 @@ public class Operacional {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+	public int getIdTipo() {
+		return idTipo;
+	}
+	public void setIdTipo(int idTipo) {
+		this.idTipo = idTipo;
+	}
+	public int getIdSubTipo() {
+		return idSubTipo;
+	}
+	public void setIdSubTipo(int idSubTipo) {
+		this.idSubTipo = idSubTipo;
+	}
 	public String getTipo() {
 		return tipo;
 	}
@@ -51,5 +65,7 @@ public class Operacional {
 	public void setSubTipo(String subTipo) {
 		this.subTipo = subTipo;
 	}
+	
+	
 	
 }

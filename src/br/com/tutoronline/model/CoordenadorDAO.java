@@ -20,16 +20,15 @@ public class CoordenadorDAO implements IPersistencia<Coordenador>{
 	public boolean GraveDados(Coordenador objeto) {
 		conn = FactoryUtil.getInstance().crie(ConnectionFactory.class).getConnection();
 
-		String sql = INSERT + INTO + " coordenador (nome, matricula,email, telefone) "+VALUES+" (?,?,?,?)";
+		String sql = INSERT + INTO + " coordenador (COTELCEL, CONOME, COMAT, COEMAIL) "+VALUES+" (?,?,?,?)";
 
 		try {
 			stmt = this.conn.prepareStatement(sql);
-
-			stmt.setString(1, objeto.getNome());
-			stmt.setString(2, objeto.getMatricula());
-			stmt.setString(3, objeto.getEmail());
-			stmt.setString(4, objeto.getTelefone());
-
+			stmt.setString(1, objeto.getTelefone());
+			stmt.setString(2, objeto.getNome());
+			stmt.setString(3, objeto.getMatricula());
+			stmt.setString(4, objeto.getEmail());
+			
 			return this.stmt.execute();
 
 		} catch (SQLException e) {
@@ -55,12 +54,11 @@ public class CoordenadorDAO implements IPersistencia<Coordenador>{
 			coordenadores = new ArrayList<>();
 			while(rs.next()){
 				Coordenador coordenador = new Coordenador();
-				coordenador.setId(rs.getInt("id"));
-				coordenador.setNome(rs.getString("nome"));
-				coordenador.setMatricula(rs.getString("matricula"));
-				coordenador.setEmail(rs.getString("email"));
-				coordenador.setTelefone(rs.getString("telefone"));
-				coordenador.setAtivado(rs.getBoolean("ativado"));
+				coordenador.setId(rs.getInt("coid"));
+				coordenador.setNome(rs.getString("conome"));
+				coordenador.setMatricula(rs.getString("comat"));
+				coordenador.setEmail(rs.getString("coemail"));
+				coordenador.setTelefone(rs.getString("cotelcel"));
 
 				coordenadores.add(coordenador);
 			}
@@ -81,7 +79,7 @@ public class CoordenadorDAO implements IPersistencia<Coordenador>{
 	public boolean AtualizeDados(Coordenador objeto) {
 		conn = FactoryUtil.getInstance().crie(ConnectionFactory.class).getConnection();
 
-		String sql = UPDATE + " coordenador " + SET + " nome = ?, matricula = ?,email = ?, telefone = ?, ativado = ? " +WHERE+" coordenador.id = ?";
+		String sql = UPDATE + " coordenador " + SET + " conome = ?, comat = ?, coemail = ?, cotelcel = ?" +WHERE+" coordenador.coid = ?";
 
 		try {
 			stmt = this.conn.prepareStatement(sql);
@@ -90,7 +88,6 @@ public class CoordenadorDAO implements IPersistencia<Coordenador>{
 			stmt.setString(2, objeto.getMatricula());
 			stmt.setString(3, objeto.getEmail());
 			stmt.setString(4, objeto.getTelefone());
-			stmt.setBoolean(5, objeto.isAtivado());
 			stmt.setInt(6, objeto.getId());
 
 			return this.stmt.executeUpdate() > 0 ;

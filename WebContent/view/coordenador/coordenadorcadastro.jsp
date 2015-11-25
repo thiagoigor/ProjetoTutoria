@@ -25,7 +25,7 @@
 			<h3>Cadastro de Coordenador</h3>
 
 			<form class="form-horizontal form-search" name="formCoordenador"
-				action="coordenador?action=cadastrar" method="post">
+				action="../../CoordenadorController?action=cadastrar" method="post">
 				<div class="cold-md-12">
 					<fieldset class="fsStyle">
 						<legend class="legendStyle"> Informações </legend>
@@ -55,7 +55,7 @@
 						</div>
 						<div class="form-group" >
 							<div class="col-sm-offset-2 col-sm-1">
-								<button class="btn btn-default" type="submit" name="salvar">Salvar</button>
+								<button class="btn btn-default" type="submit" name="submit">Salvar</button>
 							</div>
 							<div class="col-sm-1">
 								<button  class="btn btn-default" type="button" name="cancelar">Cancelar</button>

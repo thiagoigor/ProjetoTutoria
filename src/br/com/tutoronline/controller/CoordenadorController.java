@@ -1,6 +1,7 @@
 package br.com.tutoronline.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,19 +25,20 @@ public class CoordenadorController extends HttpServlet {
 
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd;
-
+		
+		System.out.println("passei aqui 1");
 		//recuperando a action do index.
 		String action = request.getParameter("action");
-
+		
 		// para tirar o erro de null exception exception
 		if(action == null){
 			action="";
 		}
-
+		RequestDispatcher rd;
 		switch (action) {
 		case "cadastrar":
 			this.cadastrarCoordenador(request, response);
+			System.out.println("passei aqui 2");
 			break;
 		case "listar":
 			this.listarCoordenador(request, response);
@@ -82,7 +84,10 @@ public class CoordenadorController extends HttpServlet {
 		return false;
 	}
 
-	private boolean listarCoordenador(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{	
-		return false;
+	private void listarCoordenador(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{	
+		List<Coordenador> coordenadores = FactoryUtil.getInstance().crie(CoordenadorDAO.class).ObtenhaDados(null);
+		request.setAttribute("coordenadores", coordenadores);
+		RequestDispatcher rd = request.getRequestDispatcher("/view/coordenador/coordenador.jsp");
+		rd.forward(request, response);	
 	}
 }

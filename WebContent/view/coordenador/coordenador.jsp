@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@page import="br.com.tutoronline.entity.Coordenador"%>
+<%@page import="java.util.List"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,6 +26,7 @@
 		<%@ include file="../../fragment/menu.html"%>
 		<div class="col-md-10">
 			<article>
+				<% String retorno = (String) request.getAttribute("retorno"); if(retorno != null) out.println(retorno); %>
 				<h3>Lista de Coordenadores</h3>
 			<br />
 
@@ -36,13 +41,21 @@
 					</tr>
 				</thead>
 				<tbody>
+				<% 
+					List<Coordenador> coordenadores = (List) request.getAttribute("usuarios");
+				if(coordenadores != null){
+					for(Coordenador c : coordenadores){
+				%>
 					<tr>
-						<td>Juliano</td>
-						<td>2233</td>
-						<td>Juliano@alfa.br</td>
-						<td>62 99999999</td>
-						<td>A R</td>
-					</tr>
+						<td><%=c.getNome() %></td>
+						<td><%=c.getMatricula()%></td>
+						<td><%=c.getEmail()%></td>
+						<td><%=c.getTelefone() %></td>
+						<td><a href="user?action=remover&id=<%=c.getId()%>" method="post" ><img alt="" title="" src="/img/delete.png"  /></a></td>
+					</tr> 
+					<%
+					}}
+				%>
 				</tbody>
 			</table>
 			<a

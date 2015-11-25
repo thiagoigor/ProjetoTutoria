@@ -32,25 +32,25 @@
 						<div class="form-group">
 							<label for="nome" class="col-sm-2 control-label">Nome</label>
 							<div class="col-sm-10">
-								<input class="form-control input-form" type="text" name="nome"><br>
+								<input class="form-control input-form" type="text" name="nome" maxlength="60" required><br>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="matricula" class="col-sm-2 control-label">Matrícula</label>
 							<div class="col-sm-10">
-								<input class="form-control input-form" type="text" name="matricula"><br>
+								<input class="form-control input-form" type="text" name="matricula" maxlength="20" required><br>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="email" class="col-sm-2 control-label">E-mail</label>
 							<div class="col-sm-10">
-								<input class="form-control input-form" type="text" name="email"><br>
+								<input class="form-control input-form" type="text" name="email" maxlength="45" required><br>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="telefone" class="col-sm-2 control-label">Telefones</label>
+							<label for="telefone" class="col-sm-2 control-label" required>Telefones</label>
 							<div class="col-sm-10">
-								<input class="form-control input-form" type="text" name="telefone">
+								<input class="form-control input-form" type="text" name="telefone" maxlength="12">
 							</div>
 						</div>
 						<div class="form-group" >

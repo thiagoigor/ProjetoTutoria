@@ -26,7 +26,7 @@ public class CoordenadorController extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("passei aqui 1");
+		
 		//recuperando a action do index.
 		String action = request.getParameter("action");
 		
@@ -35,10 +35,10 @@ public class CoordenadorController extends HttpServlet {
 			action="";
 		}
 		RequestDispatcher rd;
+		System.out.println("passei aqui 1");
 		switch (action) {
 		case "cadastrar":
 			this.cadastrarCoordenador(request, response);
-			System.out.println("passei aqui 2");
 			break;
 		case "listar":
 			this.listarCoordenador(request, response);
@@ -75,10 +75,8 @@ public class CoordenadorController extends HttpServlet {
 		}else{
 			request.setAttribute("retorno", "Erro no cadastro.");
 		}
-		rd = request.getRequestDispatcher("/view/coordenador/coordenador.jsp");
-
+		rd = request.getRequestDispatcher("view/coordenador/coordenador.jsp");
 		rd.forward(request, response);
-
 	}
 
 	private boolean desativarCoordenador(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{	
@@ -88,7 +86,7 @@ public class CoordenadorController extends HttpServlet {
 	private void listarCoordenador(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{	
 		List<Coordenador> coordenadores = FactoryUtil.getInstance().crie(CoordenadorDAO.class).ObtenhaDados(null);
 		request.setAttribute("coordenadores", coordenadores);
-		RequestDispatcher rd = request.getRequestDispatcher("/view/coordenador/coordenador.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("view/coordenador/coordenador.jsp");
 		rd.forward(request, response);	
 	}
 }

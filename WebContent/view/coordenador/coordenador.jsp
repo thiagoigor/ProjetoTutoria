@@ -42,7 +42,7 @@
 				</thead>
 				<tbody>
 				<% 
-					List<Coordenador> coordenadores = (List) request.getAttribute("usuarios");
+					List<Coordenador> coordenadores = (List) request.getAttribute("coordenadores");
 				if(coordenadores != null){
 					for(Coordenador c : coordenadores){
 				%>
@@ -61,6 +61,8 @@
 			<a
 				href="<%= request.getContextPath()%>/view/coordenador/coordenadorcadastro.jsp"><button class="btn btn-default">Novo
 					Coordenador</button></a>
+					<a
+				href="../../CoordenadorController?action=listar"><button class="btn btn-default">Listar</button></a>
 			</article>
 		</div>
 	</div>

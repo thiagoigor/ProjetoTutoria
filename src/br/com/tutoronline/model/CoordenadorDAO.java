@@ -29,7 +29,7 @@ public class CoordenadorDAO implements IPersistencia<Coordenador>{
 			stmt.setString(3, objeto.getMatricula());
 			stmt.setString(4, objeto.getEmail());
 			
-			return !this.stmt.execute();
+			return stmt.executeUpdate() > 0;
 
 		} catch (SQLException e) {
 			throw new RuntimeException();
@@ -46,6 +46,7 @@ public class CoordenadorDAO implements IPersistencia<Coordenador>{
 
 	@Override
 	public List<Coordenador> ObtenhaDados(Coordenador objeto) {
+		conn = FactoryUtil.getInstance().crie(ConnectionFactory.class).getConnection();
 		List<Coordenador> coordenadores=null;
 		try{
 			String sql = SELECT + " * " + FROM + " coordenador";

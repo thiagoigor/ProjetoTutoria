@@ -62,6 +62,7 @@ public class CoordenadorController extends HttpServlet {
 		String matricula = request.getParameter("matricula"); 
 		String email = request.getParameter("email");
 		String telefone = request.getParameter("telefone");
+		System.out.println(matricula);
 		//boolean ativado = (boolean) request.getParameter("enabled");
 		CoordenadorDAO coordenadorDao = FactoryUtil.getInstance().crie(CoordenadorDAO.class);
 

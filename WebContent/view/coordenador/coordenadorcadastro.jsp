@@ -38,7 +38,7 @@
 						<div class="form-group">
 							<label for="matricula" class="col-sm-2 control-label">Matrícula</label>
 							<div class="col-sm-10">
-								<input class="form-control input-form" type="text" nome="matricula"><br>
+								<input class="form-control input-form" type="text" name="matricula"><br>
 							</div>
 						</div>
 						<div class="form-group">

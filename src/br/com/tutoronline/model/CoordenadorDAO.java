@@ -29,7 +29,7 @@ public class CoordenadorDAO implements IPersistencia<Coordenador>{
 			stmt.setString(3, objeto.getMatricula());
 			stmt.setString(4, objeto.getEmail());
 			
-			return this.stmt.execute();
+			return !this.stmt.execute();
 
 		} catch (SQLException e) {
 			throw new RuntimeException();
